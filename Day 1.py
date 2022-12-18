@@ -1,23 +1,24 @@
-file = open('day1.txt', 'r')
-#print(data.read())
+# Day 1
+elves = []
+calories = []
 
-#elves = []
-elf_number = 0
-
-data = file.read()
-elves = data.split()
-
-file.close()
-"""
 with open('day1.txt', 'r') as data:
+    sub_list = []
     for line in data:
         #print(line)
         if line.strip():
             #elves[elf_number].append(list)
-            print(line)
+            sub_list.append(int(line.strip()))
         else: 
-            print("Line break")
-            #elf_number += 1
+            # If line is empty push the sublist and reset it
+            elves.append(sub_list)
+            sub_list = []
             continue
-"""
-print(elves)
+
+for i in range(len(elves)):
+    sum = 0
+    for item in elves[i]:
+        sum += item
+    calories.append(sum)
+
+print(calories)
