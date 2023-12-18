@@ -1,5 +1,0 @@
-Run the following command in the terminal with the updated date. This will create
-a new txt file with in the file directory.
-
-aocd > input.txt  # saves today's data
-aocd 1 2022 > day1.txt  # save some other day's data
