@@ -3,7 +3,7 @@ import os
 
 token = os.getenv('AOC_SESSION')
 
-fetch_date = 1
+fetch_date = 2
 fetch_year = 2023
 
 def make_data_file(fetch_date, path):
