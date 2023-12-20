@@ -2,36 +2,32 @@ from aocd import submit
 
 # Parameters
 Year = 2023
-Day = 1
+Day = 2
 path = str(Year) + '/Day_' + str(Day) + '/data.txt'
-my_answer = ''
 
 # Open & Manipulate Data
 with open(path) as data_file:
     data = data_file.read()
-    #print(data)
     input_a = data.splitlines()
-    #print(lines)
-
+    input_b = input_a
 
 # --- Part One ---
-
-my_answer_a = sum
-print(f"Answer_a: {my_answer_a}")
-
-# Submit answers
-
-#submit(my_answer_a, part="a", day=Day, year=Year)
-
+def part_a(input_a):
+ 
+    return answer_a
 
 # --- Part Two --- 
 
-# Create Data
-input_b = data.splitlines()
+def part_b(input_b):
 
-my_answer_b = ""
-print(f"Answer_b: {my_answer_b}")
+    return answer_b
 
-# Submit answers
+# --- SUBMIT ANSWERS ---
 
-#submit(my_answer_b, part="b", day=Day, year=Year)
+answer_a = part_a(input_a)
+print(f"Answer_a: {answer_a}")
+#submit(my_answer_a, part="a", day=Day, year=Year)
+
+answer_b = part_b(input_b)
+print(f"Answer_b: {answer_b}")
+#submit(my_answer_b, part="a", day=Day, year=Year)
