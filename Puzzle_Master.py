@@ -30,4 +30,4 @@ print(f"Answer_a: {answer_a}")
 
 answer_b = part_b(input_b)
 print(f"Answer_b: {answer_b}")
-#submit(my_answer_b, part="a", day=Day, year=Year)
+#submit(my_answer_b, part="b", day=Day, year=Year)
