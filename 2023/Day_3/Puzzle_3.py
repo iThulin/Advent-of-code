@@ -2,7 +2,7 @@ from aocd import submit
 
 # Parameters
 Year = 2023
-Day = 2
+Day = 3
 path = str(Year) + '/Day_' + str(Day) + '/data.txt'
 
 # Open & Manipulate Data
@@ -14,6 +14,27 @@ with open(path) as data_file:
 # --- Part One ---
 def part_a(input_a):
  
+    # Greedy nearest neighbors algorithm.
+    # 1. Find a symbol
+    # 2. look for a digit in surrounding directions
+    # 3. If number is found, scan horizontally for full number
+    # 4. Add number to the sum and continue search
+
+    array = []
+
+    for line in input_a:
+        row = []
+        for character in line:
+            if character == '.':
+                row.append('')
+            else:
+                row.append(character)
+        array.append(row)
+
+    for i in range(len(array)):
+        print(array[i])
+
+
     return answer_a
 
 # --- Part Two --- 
