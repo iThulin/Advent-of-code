@@ -37,7 +37,6 @@ def search_neighbors(array, row, col):
 
 def trim_neighbors(neighbors):
     trim_neighbors = []
-    print(f"Original: {neighbors}")
     upper, middle, lower = neighbors[:3], neighbors[3:5], neighbors[5:]
     print(f" upper: {upper}\n middle: {middle}\n lower: {lower}")
 
@@ -50,8 +49,10 @@ def trim_neighbors(neighbors):
         if upper[1][0].isnumeric() == False:
             trim_neighbors.append(upper[2])
 
-    trim_neighbors.append(middle[0])
-    trim_neighbors.append(middle[1])
+    if middle[0][0].isnumeric():
+        trim_neighbors.append(middle[0])
+    if middle[1][0].isnumeric():
+        trim_neighbors.append(middle[1])
 
     if lower[0][0].isnumeric():
         trim_neighbors.append(lower[0])
@@ -67,26 +68,27 @@ def trim_neighbors(neighbors):
 
 def scan_neighbors(array, row, col):
     num_list = []
-
     domain_x = len(array[0])
-
     pointer = col
 
+    print(f"row: {row}, col: {col}")
     # Scan to the start of a number
-
+    print(f"Start scan at: {array[row][pointer]}")
     while array[row][pointer - 1].isnumeric() and 0 <= pointer - 1:
         pointer -= 1
 
     while array[row][pointer].isnumeric():
         num_list.append(array[row][pointer])
+        print(f" Appending: {array[row][pointer]}")
         if pointer + 1 < domain_x:
             pointer += 1
         else:
             break
 
-    print(num_list)
-
-    return sum(map(int, num_list))
+    print(f"num_list: {num_list}")
+    result = int("".join(num_list))
+    print(result)
+    return result
     
 
 # --- Part One ---
@@ -122,7 +124,7 @@ def part_a(input_a):
                 # 3. If number is found, scan horizontally for full number
                 for j, item in enumerate(trimmed_neighbors):
                     print(f'found a number: {item}')
-                    part_num = scan_neighbors(array, row=neighbors[j][1] , col=neighbors[j][2] )
+                    part_num = scan_neighbors(array, row=trimmed_neighbors[j][1] , col=trimmed_neighbors[j][2] )
                     part_sum += part_num
                     print(f"Adding {part_num} to make sum= {part_sum}\n")
             else:
@@ -146,6 +148,8 @@ def part_b(input_b):
 answer_a = part_a(input_a)
 print(f"Answer_a: {answer_a}")
 #submit(answer_a, part="a", day=Day, year=Year)
+
+# --- COMPLETE ---
 
 answer_b = part_b(input_b)
 print(f"Answer_b: {answer_b}")
