@@ -89,7 +89,7 @@ def scan_neighbors(array, row, col):
     result = int("".join(num_list))
     print(result)
     return result
-    
+'''   
 
 # --- Part One ---
 def part_a(input_a):
@@ -103,7 +103,7 @@ def part_a(input_a):
     array = []
     part_sum = 0
 
-    for line in input_a:
+    for line in input_b:
         row = []
         for character in line:
             if character == '.':
@@ -135,22 +135,62 @@ def part_a(input_a):
     answer_a = part_sum
 
     return answer_a
-
+'''
 # --- Part Two --- 
 
 def part_b(input_b):
+
+    array = []
+    part_sum = 0
+
+    for line in input_b:
+        row = []
+        for character in line:
+            if character == '.':
+                row.append('')
+            else:
+                row.append(character)
+        array.append(row)
+
+    for row_num, row in enumerate(array):
+        #print(row)
+        for index, string_val in enumerate(array[row_num]):
+            # 1. Find a symbol
+            if string_val == '*':
+                print(f"{string_val} at Row, index {row_num},{index}")
+                # 2. Look for a digit in surrounding directions.
+                neighbors = search_neighbors(array, row=row_num, col=index)
+                trimmed_neighbors = trim_neighbors(neighbors)
+                # 3. If number is found, scan horizontally for full number
+                for j, item in enumerate(trimmed_neighbors):
+                    print(f'found a number: {item}')
+                    part_num = scan_neighbors(array, row=trimmed_neighbors[j][1] , col=trimmed_neighbors[j][2] )
+                    part_sum += part_num
+                    print(f"Adding {part_num} to make sum= {part_sum}\n")
+            else:
+                #print(f"Row, Index, String: {row_num}, {index}, {string_val}")
+                pass
+
+# ----------- TO DO -------------
+    # adjust  scan_neighbors and trim neighbors to search for "GEARS"
+            # Find * surrounded by 2 part numbers
+            # Multiply part numbers ("gear_ratio") then sum each gear ration 
+            # return gear ratio
+
+    answer_b = part_sum
+
 
     answer_b = 'Still learning'
     return answer_b
 
 # --- SUBMIT ANSWERS ---
-
+'''
 answer_a = part_a(input_a)
 print(f"Answer_a: {answer_a}")
 #submit(answer_a, part="a", day=Day, year=Year)
 
 # --- COMPLETE ---
-
+'''
 answer_b = part_b(input_b)
 print(f"Answer_b: {answer_b}")
 #submit(my_answer_b, part="b", day=Day, year=Year)
